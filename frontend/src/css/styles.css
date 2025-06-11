@@ -1,0 +1,49 @@
+/* Importing Orbitron font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #1f1f2e 0%, #0d0d14 100%);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#micButton {
+  background: transparent;
+  border: 2px solid rgba(255, 165, 0, 0.5);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+#micButton:hover {
+  background-color: rgba(255, 165, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 165, 0, 0.9);
+}
+
+#responseBox {
+  animation: fadeIn 0.5s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(20, 20, 30, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+/* Bottom menu buttons */
+button {
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Fade-in effect for AI responses */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
