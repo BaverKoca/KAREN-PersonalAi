@@ -1,15 +1,18 @@
 import os
-import openai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Gemini API integration (placeholder for Google Gemini or OpenAI)
+# Gemini (Google Generative AI) integration
 async def ask_gemini(prompt: str) -> str:
-    # Example using OpenAI GPT-3/4 (replace with Gemini if available)
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response.choices[0].message["content"]
+    import google.generativeai as genai
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return "GEMINI_API_KEY not set in .env file."
+    try:
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-pro")
+        response = await model.generate_content_async(prompt)
+        return response.text
+    except Exception as e:
+        return f"Gemini API error: {str(e)}"

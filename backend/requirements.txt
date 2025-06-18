@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 python-dotenv
-openai
 speechrecognition
 pyttsx3
+python-multipart
+openai
