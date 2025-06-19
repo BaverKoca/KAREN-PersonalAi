@@ -1,20 +1,49 @@
 # KAREN Personal AI
 
-A modern, voice-driven AI assistant web app powered by Gemini (or OpenAI). Speak your request, get instant answers in text and voice, and enjoy a futuristic, beautiful UI.
+<p align="center">
+  <img src="frontend/public/assets/images/preview.png" alt="KAREN Personal AI Preview" width="400"/>
+</p>
+
+---
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)](https://fastapi.tiangolo.com/)
+[![Vite](https://img.shields.io/badge/Vite-Frontend-blueviolet)](https://vitejs.dev/)
+
+---
+
+## 🚀 Overview
+KAREN Personal AI is a modern, voice-driven AI assistant web app powered by Gemini (Google Generative AI) or OpenAI. Speak your request, get instant answers in text and voice, and enjoy a futuristic, beautiful UI.
 
 ---
 
 ## ✨ Features
-- **Voice Input:** Use your microphone to ask questions or give commands.
-- **AI-Powered:** Integrates with Gemini (or OpenAI) for smart, conversational responses.
-- **Speech-to-Text:** Converts your speech to text in real time.
-- **Text-to-Speech:** AI answers are spoken back to you with natural voice.
-- **Modern UI:** Futuristic, responsive design with Orbitron font and Tailwind CSS.
-- **History & Controls:** Easily access settings, history, and reset the conversation.
+- 🎤 **Voice Input:** Use your microphone to ask questions or give commands.
+- 🤖 **AI-Powered:** Integrates with Gemini (Google) or OpenAI for smart, conversational responses.
+- 🗣️ **Speech-to-Text:** Converts your speech to text in real time.
+- 🔊 **Text-to-Speech:** AI answers are spoken back to you with natural voice.
+- 💎 **Modern UI:** Futuristic, responsive design with Orbitron font and Tailwind CSS.
+- 🕑 **History & Controls:** Easily access settings, history, and reset the conversation.
 
 ---
 
-## 🚀 Quick Start
+## 🛠️ Tech Stack
+- **Backend:** Python, FastAPI, Gemini (Google Generative AI), OpenAI, SpeechRecognition, pyttsx3
+- **Frontend:** Vite, Vanilla JS, Tailwind CSS, Web Speech API
+
+---
+
+## 🗂️ Project Structure
+```
+backend/    # FastAPI backend (AI, speech, API)
+frontend/   # Vite frontend (HTML, CSS, JS)
+docs/       # Documentation
+```
+
+---
+
+## ⚡ Quick Start
 
 ### 1. Backend Setup (Python/FastAPI)
 ```powershell
@@ -34,33 +63,35 @@ npm run dev
 
 ---
 
-## 🗂️ Project Structure
-```
-backend/    # FastAPI backend (AI, speech, API)
-frontend/   # Vite frontend (HTML, CSS, JS)
-docs/       # Documentation
-```
-
----
-
-## 🛠️ Tech Stack
-- **Backend:** Python, FastAPI, OpenAI/Gemini, SpeechRecognition, pyttsx3
-- **Frontend:** Vite, Vanilla JS, Tailwind CSS, Web Speech API
-
----
-
 ## ⚙️ Environment Variables
 Create a `.env` file in `backend/`:
 ```
+# For Gemini (Google Generative AI)
+GEMINI_API_KEY=your_gemini_key_here
+
+# Or for OpenAI (if you switch backend code)
 OPENAI_API_KEY=your_openai_key_here
-# Or GEMINI_API_KEY=your_gemini_key_here
 ```
 
 ---
 
 ## 📦 Dependencies
-- Python: fastapi, uvicorn, openai, speechrecognition, pyttsx3, python-dotenv
-- Node: vite
+- **Python:** fastapi, uvicorn, openai, google-generativeai, speechrecognition, pyttsx3, python-dotenv, python-multipart
+- **Node:** vite
+
+---
+
+## 🧩 Switching AI Providers
+- By default, the backend uses Gemini (Google Generative AI) if `GEMINI_API_KEY` is set.
+- To use OpenAI, update the backend code in `gemini_service.py` and set `OPENAI_API_KEY`.
+
+---
+
+## 🐞 Troubleshooting
+- **No AI response?** Check your `.env` file for a valid API key and ensure you have internet access.
+- **Form data error?** Make sure `python-multipart` is installed (already in requirements).
+- **OpenAI errors?** Use the latest OpenAI API code (see backend/services/gemini_service.py for details).
+- **Gemini errors?** Ensure your Google API key is correct and has access to Gemini.
 
 ---
 
@@ -73,11 +104,6 @@ OPENAI_API_KEY=your_openai_key_here
 ## 💡 Credits
 - UI inspired by modern AI assistants
 - Built by Baver Koca, 2025
-
----
-
-## 🖼️ Preview
-![screenshot](frontend/public/assets/images/preview.png)
 
 ---
 
