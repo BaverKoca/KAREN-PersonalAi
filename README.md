@@ -1,8 +1,6 @@
 # KAREN Personal AI
 
-<p align="center">
-  <img src="frontend/public/assets/images/preview.png" alt="KAREN Personal AI Preview" width="400"/>
-</p>
+![Image](https://github.com/user-attachments/assets/0dac30e4-319f-4c75-a04c-14e1b7822ca8)
 
 ---
 
