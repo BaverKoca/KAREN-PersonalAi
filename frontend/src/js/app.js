@@ -1,6 +1,10 @@
 // DOM elements
 const micButton = document.getElementById('micButton');
 const responseBox = document.getElementById('responseBox');
+const transcriptToggle = document.getElementById('transcriptToggle');
+const transcriptBox = document.getElementById('transcriptBox');
+const transcriptClose = document.getElementById('transcriptClose');
+const transcriptContent = document.getElementById('transcriptContent');
 
 // Check browser support
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -32,10 +36,30 @@ if (!SpeechRecognition) {
     micButton.innerText = '🎤';
   };
 
+  let lastTranscript = '';
+
+  if (transcriptToggle && transcriptBox && transcriptClose) {
+    transcriptToggle.onclick = () => {
+      transcriptBox.classList.toggle('hidden');
+      if (!transcriptBox.classList.contains('hidden')) {
+        transcriptContent.textContent = lastTranscript || 'Say something to see your transcript here.';
+      }
+    };
+    transcriptClose.onclick = () => {
+      transcriptBox.classList.add('hidden');
+    };
+  }
+
   recognition.onresult = async (event) => {
     recognition.running = false;
     const userText = event.results[0][0].transcript;
     micButton.innerText = '🎤'; // Reset icon
+
+    // Update transcript
+    lastTranscript = userText;
+    if (transcriptContent && !transcriptBox.classList.contains('hidden')) {
+      transcriptContent.textContent = userText;
+    }
 
     // Show user prompt in UI (optional)
     responseBox.innerHTML = `<strong>You:</strong> ${userText}<br><em>Thinking...</em>`;
@@ -81,4 +105,15 @@ function speak(text) {
   utterance.rate = 1;
   utterance.pitch = 1.2;
   speechSynthesis.speak(utterance);
+}
+
+// Add reset button logic to clear transcript
+const resetButton = document.querySelector('.bg-red-600');
+if (resetButton) {
+  resetButton.addEventListener('click', () => {
+    lastTranscript = '';
+    if (transcriptContent) {
+      transcriptContent.textContent = 'Say something to see your transcript here.';
+    }
+  });
 }
